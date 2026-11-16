@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define TAM 4
+#define TAM 5
 
 void swap(int *a, int *b){
     *a = *a + *b;
@@ -9,13 +9,17 @@ void swap(int *a, int *b){
 }
 
 void ordenar(int *vet, int tam){
-    int *pivot = vet;
+    // selection sort
+    for(int i = 0; i < tam - 1; i++){
+        int *menor = (vet + i);
 
-    for(int i = 1; i < tam; i++){
-        if(*(vet + i) < *pivot){
-            swap((vet + i), pivot);
+        for(int j = i+1; j < tam; j++){
+            if(*(vet + j) < *menor){
+                menor = (vet + j);
+            }
         }
-        pivot++;
+
+        swap((vet + i), menor);
     }
 
 }
